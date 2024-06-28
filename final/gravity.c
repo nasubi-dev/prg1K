@@ -16,12 +16,12 @@ int changeGravity(int board[7][7], int nextGravity)
     // 列ごとに下に詰める
     for (int i = 0; i < 7; i++)
     {
-      for (int j = 0; j < 7; j++)
+      for (int j = 6; j >= 0; j--)
       {
         // 0である場合は1or2をその列の中から探し､入れ替える
         if (board[j][i] != 0) continue;
         index = j;
-        for (int k = j + 1; k < 7; k++)
+        for (int k = j - 1; k >= 0; k--)
         {
           if (board[k][i] != 0)
           {

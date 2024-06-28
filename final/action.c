@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int playerAction(int board[7][7], int player)
+int playerAction(int board[7][7], int player, int nowGravity)
 {
   int selectColumn = 0;
 
@@ -11,22 +11,84 @@ int playerAction(int board[7][7], int player)
   if (selectColumn > 7 || selectColumn <= 0)
   {
     printf("Invalid column\n");
-    return playerAction(board, player);
+    return playerAction(board, player, nowGravity);
   }
 
-  for (int i = 6; i >= 0; i--)
+  // 1:↓
+  if (nowGravity == 1)
   {
-    if (board[i][selectColumn - 1] == 0)
+    for (int i = 6; i >= 0; i--)
     {
-      board[i][selectColumn - 1] = player;
-      break;
-    }
-    // 再帰呼び出し
-    else if (i == 0)
-    {
-      printf("Column is full\n");
-      return playerAction(board, player);
+      if (board[i][selectColumn - 1] == 0)
+      {
+        board[i][selectColumn - 1] = player;
+        break;
+      }
+      // 再帰呼び出し
+      else if (i == 0)
+      {
+        printf("Column is full\n");
+        return playerAction(board, player, nowGravity);
+      }
     }
   }
+
+  // 2:←
+  if (nowGravity == 2)
+  {
+    for (int i = 0; i < 7; i++)
+    {
+      if (board[selectColumn - 1][i] == 0)
+      {
+        board[selectColumn - 1][i] = player;
+        break;
+      }
+      // 再帰呼び出し
+      else if (i == 6)
+      {
+        printf("Column is full\n");
+        return playerAction(board, player, nowGravity);
+      }
+    }
+  }
+
+  // 3:↑
+  if (nowGravity == 3)
+  {
+    for (int i = 0; i < 7; i++)
+    {
+      if (board[i][selectColumn - 1] == 0)
+      {
+        board[i][selectColumn - 1] = player;
+        break;
+      }
+      // 再帰呼び出し
+      else if (i == 6)
+      {
+        printf("Column is full\n");
+        return playerAction(board, player, nowGravity);
+      }
+    }
+  }
+
+  // 4:→
+  if (nowGravity == 4)
+  {
+    for (int i = 6; i >= 0; i--)
+    {
+      if (board[selectColumn - 1][i] == 0)
+      {
+        board[selectColumn - 1][i] = player;
+        break;
+      }
+      // 再帰呼び出し
+      else if (i == 0)
+      {
+        printf("Column is full\n");
+        return playerAction(board, player, nowGravity);
+      }
+    }
+  }
+
   return 0;
 }

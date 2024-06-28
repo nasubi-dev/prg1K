@@ -10,7 +10,7 @@ int main(void)
   int board[7][7] = {0};
   // 0=continue, 1=player1, 2=player2 3=draw
   int isGameFin = 0;
-  // 1:↓ 2:← 3:↑ 4:→
+  // nowGravity % 4 + 1 ==> 1: ↓ 2: ← 3: ↑ 4: →
   int nowGravity = 1;
   int move = 1;
 
@@ -22,9 +22,9 @@ int main(void)
   while (isGameFin == 0)
   {
     printf("move: %d ", move);
-    printf("next gravity: %d\n", nowGravity);
+    printf("next gravity: %d\n", nowGravity % 4 + 1);
 
-    playerAction(board, move % 2 + 1);
+    playerAction(board, move % 2 + 1, nowGravity);
     printf("\n\n\n");
 
     ViewBoard(board);
