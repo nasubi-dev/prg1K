@@ -14,20 +14,11 @@ int initGame(int selectGravity, char scanGravity[10])
   scanf("%s", scanGravity);
 
   if (strcmp(scanGravity, "3") == 0)
-  {
-    selectGravity = 3;
-    return 0;
-  }
+    return 3;
   else if (strcmp(scanGravity, "10") == 0)
-  {
-    selectGravity = 10;
-    return 0;
-  }
+    return 10;
   else if (strcmp(scanGravity, "random") == 0)
-  {
-    selectGravity = rand() % 4 + 1;
-    return 0;
-  }
+    return rand() % 4 + 1;
   else if (strcmp(scanGravity, "nasubi") == 0)
   {
     printNasubi();
@@ -42,32 +33,45 @@ int main(void)
   int board[7][7] = {0};
   // 0=continue, 1=player1, 2=player2 3=draw
   int isGameFin = 0;
-  // nowGravity % 4 + 1 ==> 1: ↓ 2: ← 3: ↑ 4: →
+  // nowGravity % 4 + 1 ==> 0: ↓ 1: ← 2: ↑ 3: →
   int nowGravity = 1;
   int move = 1;
   char scanGravity[10];
   int selectGravity = 0;
 
   printTitle();
-  initGame(selectGravity, scanGravity);
+  selectGravity = initGame(selectGravity, scanGravity);
 
   ViewBoard(board);
   while (isGameFin == 0)
   {
     printf("move: %d ", move);
+
+    printf("next change gravity:");
+    if ((selectGravity - move + 1) % selectGravity != 0)
+      printf("%d\n", (selectGravity - move + 1) % selectGravity);
+    else
+      printf("%d\n", selectGravity);
+
     printf("next gravity: ");
-    if (nowGravity % 4 == 1)
+    if (nowGravity % 4 == 0)
       printf("↓\n");
+    else if (nowGravity % 4 == 1)
+      printf("←\n");
+    else if (nowGravity % 4 == 2)
+      printf("↑\n");
+    else if (nowGravity % 4 == 3)
+      printf("→\n");
 
     playerAction(board, move % 2 + 1, nowGravity);
     printf("\n\n\n");
 
     ViewBoard(board);
-    //! test 3手目で重力変更
+    // 設定した手数ごとに重力を変える
     if (move % selectGravity == 0)
     {
 
-      changeGravity(board, nowGravity % 4 + 1);
+      changeGravity(board, (nowGravity) % 4);
       nowGravity++;
       ViewBoard(board);
     }

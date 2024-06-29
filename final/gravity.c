@@ -10,8 +10,8 @@ int changeGravity(int board[7][7], int nextGravity)
       printf("Change gravity!!!\n");
       printf("1:↓ 2:← 3:↑ 4:→\n");
 
-  // 1:↓
-  if (nextGravity == 1)
+  // 0:↓
+  if (nextGravity == 0)
   {
     // 列ごとに下に詰める
     for (int i = 0; i < 7; i++)
@@ -34,8 +34,8 @@ int changeGravity(int board[7][7], int nextGravity)
     }
   }
 
-  // 2:←
-  if (nextGravity == 2)
+  // 1:←
+  if (nextGravity == 1)
   {
     // 行ごとに右に詰める
     for (int i = 0; i < 7; i++)
@@ -59,8 +59,8 @@ int changeGravity(int board[7][7], int nextGravity)
     }
   }
 
-  // 3:↑
-  if (nextGravity == 3)
+  // 2:↑
+  if (nextGravity == 2)
   {
     // 列ごとに上に詰める
     for (int i = 0; i < 7; i++)
@@ -84,8 +84,8 @@ int changeGravity(int board[7][7], int nextGravity)
     }
   }
 
-  // 4:→
-  if (nextGravity == 4)
+  // 3:→
+  if (nextGravity == 3)
   {
     // 行ごとに左に詰める
     for (int i = 0; i < 7; i++)
