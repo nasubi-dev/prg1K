@@ -41,31 +41,27 @@ int main(void)
   printTitle();
   selectGravity = initGame(selectGravity, scanGravity);
 
-  ViewBoard(board);
+  ViewBoard(board, nowGravity);
   while (isGameFin == 0)
   {
     printf("move: %d ", move);
 
-    printf("next change gravity:");
-    if ((selectGravity - move + 1) % selectGravity != 0)
-      printf("%d\n", (selectGravity - move + 1) % selectGravity);
-    else
-      printf("%d\n", selectGravity);
+    printf("next change gravity turn : ");
 
     printf("next gravity: ");
-    if (nowGravity % 4 == 0)
+    if ((nowGravity + 1) % 4 == 0)
       printf("↓\n");
-    if (nowGravity % 4 == 1)
+    if ((nowGravity + 1) % 4 == 1)
       printf("←\n");
-    if (nowGravity % 4 == 2)
+    if ((nowGravity + 1) % 4 == 2)
       printf("↑\n");
-    if (nowGravity % 4 == 3)
+    if ((nowGravity + 1) % 4 == 3)
       printf("→\n");
 
     playerAction(board, move % 2 + 1, nowGravity % 4);
     printf("\n\n\n");
 
-    ViewBoard(board);
+    ViewBoard(board, nowGravity);
 
     // 設定した手数ごとに重力を変える
     if (move % selectGravity == 0)
@@ -74,7 +70,7 @@ int main(void)
       changeGravity(board, (nowGravity + 1) % 4);
       nowGravity++;
       // 再レンダー
-      ViewBoard(board);
+      ViewBoard(board, nowGravity);
     }
     isGameFin = checkGameSet(board);
 
