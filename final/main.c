@@ -60,6 +60,7 @@ int main(void)
 
     playerAction(board, move % 2 + 1, nowGravity % 4);
     printf("\n\n\n");
+    system("clear");
 
     ViewBoard(board, nowGravity);
 

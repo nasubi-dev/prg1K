@@ -22,9 +22,9 @@ int ViewBoard(int board[7][7], int nowGravity)
       printf("[");
 
       if (board[i][j] == 1)
-        printf("X");
+        printf("\x1b[31mX\x1b[39m");
       else if (board[i][j] == 2)
-        printf("O");
+        printf("\x1b[34mO\x1b[39m");
       else
         printf(" ");
 
