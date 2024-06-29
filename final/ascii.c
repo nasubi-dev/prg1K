@@ -2,7 +2,6 @@
 
 int printNasubi()
 {
-
   printf("                                                              .....(+zztO.     .\n");
   printf("                                                     ..Jztrtrttttrrtrttrt!.(zt\n");
   printf("                                                 ..jrtttrttttrttrttttrtttttttr\n");
@@ -52,6 +51,17 @@ int printTitle()
   printf("| (_| (_) | | | | | | |  __/ (__| ||_____|  _| (_) | | | (_|  __/ \n");
   printf(" \\___\\___/|_| |_|_| |_|\\___|\\___|\\__|    |_|  \\___/|_|  \\___\\___| \n");
   printf("                                                              \n");
+  return 0;
+}
+
+int printChangeGravity(int nextGravity)
+{
+  printf("  ____ _                               ____                 _ _          \n");
+  printf(" / ___| |__   __ _ _ __   __ _  ___   / ___|_ __ __ ___   _(_) |_ _   _  \n");
+  printf("| |   | '_ \\ / _` | '_ \\ / _` |/ _ \\ | |  _| '__/ _` \\ \\ / / | __| | | | \n");
+  printf("| |___| | | | (_| | | | | (_| |  __/ | |_| | | | (_| |\\ V /| | |_| |_| | \n");
+  printf(" \\____|_| |_|\\__,_|_| |_|\\__, |\\___|  \\____|_|  \\__,_| \\_/ |_|\\__|\\__, | \n");
+  printf("                         |___/                                    |___/  \n");
   return 0;
 }
 

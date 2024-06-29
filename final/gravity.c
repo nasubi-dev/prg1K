@@ -5,11 +5,6 @@
 int changeGravity(int board[7][7], int nextGravity)
 {
   int index = 0;
-
-
-      printf("Change gravity!!!\n");
-      printf("1:↓ 2:← 3:↑ 4:→\n");
-
   // 0:↓
   if (nextGravity == 0)
   {
