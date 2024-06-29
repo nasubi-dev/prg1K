@@ -14,8 +14,8 @@ int playerAction(int board[7][7], int player, int nowGravity)
     return playerAction(board, player, nowGravity);
   }
 
-  // 1:↓
-  if (nowGravity == 1)
+  // 0:↓
+  if (nowGravity == 0)
   {
     for (int i = 6; i >= 0; i--)
     {
@@ -33,8 +33,8 @@ int playerAction(int board[7][7], int player, int nowGravity)
     }
   }
 
-  // 2:←
-  if (nowGravity == 2)
+  // 1:←
+  if (nowGravity == 1)
   {
     for (int i = 0; i < 7; i++)
     {
@@ -52,8 +52,8 @@ int playerAction(int board[7][7], int player, int nowGravity)
     }
   }
 
-  // 3:↑
-  if (nowGravity == 3)
+  // 2:↑
+  if (nowGravity == 2)
   {
     for (int i = 0; i < 7; i++)
     {
@@ -71,8 +71,8 @@ int playerAction(int board[7][7], int player, int nowGravity)
     }
   }
 
-  // 4:→
-  if (nowGravity == 4)
+  // 3:→
+  if (nowGravity == 3)
   {
     for (int i = 6; i >= 0; i--)
     {

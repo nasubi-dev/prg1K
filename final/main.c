@@ -34,7 +34,7 @@ int main(void)
   // 0=continue, 1=player1, 2=player2 3=draw
   int isGameFin = 0;
   // nowGravity % 4 + 1 ==> 0: ↓ 1: ← 2: ↑ 3: →
-  int nowGravity = 1;
+  int nowGravity = 0;
   int move = 1;
   char scanGravity[10];
   int selectGravity = 0;
@@ -63,7 +63,7 @@ int main(void)
     else if (nowGravity % 4 == 3)
       printf("→\n");
 
-    playerAction(board, move % 2 + 1, nowGravity);
+    playerAction(board, move % 2 + 1, nowGravity % 4);
     printf("\n\n\n");
 
     ViewBoard(board);
@@ -71,7 +71,7 @@ int main(void)
     if (move % selectGravity == 0)
     {
 
-      changeGravity(board, (nowGravity) % 4);
+      changeGravity(board, (nowGravity + 1) % 4);
       nowGravity++;
       ViewBoard(board);
     }
