@@ -44,14 +44,9 @@ int main(void)
   ViewBoard(board, nowGravity);
   while (isGameFin == 0)
   {
-    printf("move: %d\n ", move);
-    printf("next change gravity turn : ");
-    if ((move % selectGravity) == 0)
-      printf("%d\n", selectGravity);
-    else
-      printf("%d\n", selectGravity - (move % selectGravity));
+    // printf("move: %d ", move);
 
-    printf("next gravity: \n");
+    printf("next gravity: ");
     if ((nowGravity + 1) % 4 == 0)
       printf("↓\n");
     if ((nowGravity + 1) % 4 == 1)
@@ -60,6 +55,12 @@ int main(void)
       printf("↑\n");
     if ((nowGravity + 1) % 4 == 3)
       printf("→\n");
+
+    printf("next change gravity turn : ");
+    if ((move % selectGravity) == 0)
+      printf("%d\n", selectGravity);
+    else
+      printf("%d\n", selectGravity - (move % selectGravity));
 
     playerAction(board, move % 2 + 1, nowGravity % 4);
     printf("\n\n\n");
