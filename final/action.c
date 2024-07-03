@@ -1,8 +1,8 @@
 #include <stdio.h>
+#include "./ai.c"
 
-int playerAction(int board[7][7], int player, int nowGravity)
+int playerAction(int board[7][7], int player, int nowGravity, int isAI)
 {
-  // 1~7
   int selectColumnRow = 0;
   char *RowORColumn;
 
@@ -11,14 +11,22 @@ int playerAction(int board[7][7], int player, int nowGravity)
   else
     RowORColumn = "Row";
 
-  printf("Player %d, enter %s: ", player, RowORColumn);
-  scanf("%d", &selectColumnRow);
+  if (isAI)
+  {
+    selectColumnRow = simpleAI(board, nowGravity);
+    printf("AI Player %d selects %s: %d\n", player, RowORColumn, selectColumnRow);
+  }
+  else
+  {
+    printf("Player %d, enter %s: ", player, RowORColumn);
+    scanf("%d", &selectColumnRow);
+  }
 
   // 再帰呼び出し
-  if (selectColumnRow < 1 || selectColumnRow > 7)
+  if (selectColumnRow < 1 || selectColumnRow > 7 && !isAI)
   {
     printf("Please enter 1~7\n");
-    return playerAction(board, player, nowGravity);
+    return playerAction(board, player, nowGravity, isAI);
   }
 
   // 0:↓
@@ -35,7 +43,7 @@ int playerAction(int board[7][7], int player, int nowGravity)
       else if (i == 0)
       {
         printf("%s is full\n", RowORColumn);
-        return playerAction(board, player, nowGravity);
+        return playerAction(board, player, nowGravity, isAI);
       }
     }
   }
@@ -54,7 +62,7 @@ int playerAction(int board[7][7], int player, int nowGravity)
       else if (i == 6)
       {
         printf("%s is full\n", RowORColumn);
-        return playerAction(board, player, nowGravity);
+        return playerAction(board, player, nowGravity, isAI);
       }
     }
   }
@@ -73,7 +81,7 @@ int playerAction(int board[7][7], int player, int nowGravity)
       else if (i == 6)
       {
         printf("%s is full\n", RowORColumn);
-        return playerAction(board, player, nowGravity);
+        return playerAction(board, player, nowGravity, isAI);
       }
     }
   }
@@ -92,7 +100,7 @@ int playerAction(int board[7][7], int player, int nowGravity)
       else if (i == 0)
       {
         printf("%s is full\n", RowORColumn);
-        return playerAction(board, player, nowGravity);
+        return playerAction(board, player, nowGravity, isAI);
       }
     }
   }

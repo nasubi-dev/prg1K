@@ -41,6 +41,16 @@ int main(void)
   printTitle();
   selectGravity = initGame(selectGravity, scanGravity);
 
+  int playerType[2] = {0, 0}; // 0: Human, 1: AI
+
+  printf("Select player types:\n");
+  printf("Player 1 (0: Human, 1: AI): ");
+  scanf("%d", &playerType[0]);
+  printf("Player 2 (0: Human, 1: AI): ");
+  scanf("%d", &playerType[1]);
+
+  srand(time(NULL)); // 乱数の初期化
+
   ViewBoard(board, nowGravity);
   while (isGameFin == 0)
   {
@@ -62,7 +72,7 @@ int main(void)
     else
       printf("%d\n", selectGravity - (move % selectGravity));
 
-    playerAction(board, move % 2 + 1, nowGravity % 4);
+    playerAction(board, move % 2 + 1, nowGravity % 4, playerType[move % 2]);
     printf("\n\n\n");
     system("clear");
 
