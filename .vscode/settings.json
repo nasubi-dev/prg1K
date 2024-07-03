@@ -5,5 +5,9 @@
     "__config": "c",
     "stdbool.h": "c"
   },
-  "cSpell.words": ["outro", "Treatmentable"]
+  "cSpell.words": [
+    "Lavel",
+    "outro",
+    "Treatmentable"
+  ]
 }
