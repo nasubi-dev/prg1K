@@ -44,11 +44,14 @@ int main(void)
   ViewBoard(board, nowGravity);
   while (isGameFin == 0)
   {
-    printf("move: %d ", move);
-
+    printf("move: %d\n ", move);
     printf("next change gravity turn : ");
+    if ((move % selectGravity) == 0)
+      printf("%d\n", selectGravity);
+    else
+      printf("%d\n", selectGravity - (move % selectGravity));
 
-    printf("next gravity: ");
+    printf("next gravity: \n");
     if ((nowGravity + 1) % 4 == 0)
       printf("↓\n");
     if ((nowGravity + 1) % 4 == 1)
