@@ -33,13 +33,10 @@ int selectPlayerORAI()
   scanf("%s", yn);
 
   if (strcmp(yn, "y") == 0)
-  {
     return 1;
-  }
   else if (strcmp(yn, "n") == 0)
-  {
     return 0;
-  }
+
   printf("Please enter y or n\n");
   return selectPlayerORAI();
 }
@@ -51,13 +48,9 @@ int selectAILavel()
   scanf("%s", lavel);
 
   if (strcmp(lavel, "1") == 0)
-  {
     return 1;
-  }
   else if (strcmp(lavel, "2") == 0)
-  {
     return 2;
-  }
   printf("Please enter 0 or 1\n");
   return selectAILavel();
 }
