@@ -8,16 +8,20 @@
 #define WIN_SCORE 1000000
 #define LOSE_SCORE -1000000
 
+// 装飾用テキストの表示関数
 int printNasubi();
 int printResult(int isGameFin);
 int printTitle();
 int printChangeGravity(int nextGravity);
 
+// ゲームの初期設定
 int initGame(int selectGravity, char scanGravity[10]);
 int selectPlayerORAI();
 
+// ボードの表示
 int ViewBoard(int board[7][7], int nowGravity);
 
+// ゲームの進行
 int changeGravity(int board[7][7], int nextGravity);
 int checkGameSet(int board[7][7]);
 int playerAction(int board[7][7], int player, int nowGravity, int isAI, int AILavel);
@@ -50,17 +54,14 @@ int main(void)
   srand(time(NULL)); // 乱数の初期化
 
   ViewBoard(board, nowGravity);
+  // ゲームの進行
   while (isGameFin == 0)
   {
     printf("next gravity: ");
-    if ((nowGravity + 1) % 4 == 0)
-      printf("↓\n");
-    if ((nowGravity + 1) % 4 == 1)
-      printf("←\n");
-    if ((nowGravity + 1) % 4 == 2)
-      printf("↑\n");
-    if ((nowGravity + 1) % 4 == 3)
-      printf("→\n");
+    if ((nowGravity + 1) % 4 == 0) printf("↓\n");
+    if ((nowGravity + 1) % 4 == 1) printf("←\n");
+    if ((nowGravity + 1) % 4 == 2) printf("↑\n");
+    if ((nowGravity + 1) % 4 == 3) printf("→\n");
 
     printf("next change gravity turn : ");
     if ((move % selectGravity) == 0)
@@ -91,7 +92,7 @@ int main(void)
     move++;
   }
 
-  // わかりやすくするためにグラフィカルに表示
+  // 結果の表示
   printResult(isGameFin);
   return 0;
 }
@@ -452,6 +453,7 @@ int playerAction(int board[7][7], int player, int nowGravity, int isAI, int AILa
   else
     RowORColumn = "Row";
 
+//player､AIごとに入力を受け取る
   if (isAI)
   {
     selectColumnRow = simpleAI(board, player);
