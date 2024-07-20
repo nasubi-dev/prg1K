@@ -47,12 +47,9 @@ int main(void)
 
   // player2をAIにするかどうか
   playerType[1] = selectPlayerORAI();
-
   // 重力の設定
   selectGravity = initGame(selectGravity, scanGravity);
-
   srand(time(NULL)); // 乱数の初期化
-
   ViewBoard(board, nowGravity);
   // ゲームの進行
   while (isGameFin == 0)
@@ -70,9 +67,7 @@ int main(void)
       printf("%d\n", selectGravity - (move % selectGravity));
 
     playerAction(board, move % 2 + 1, nowGravity % 4, playerType[move % 2], AILavel);
-    printf("\n\n\n");
     system("clear");
-
     ViewBoard(board, nowGravity);
 
     // 設定した手数ごとに重力を変える
